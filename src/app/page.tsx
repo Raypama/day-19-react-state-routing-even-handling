@@ -8,7 +8,7 @@ export default function Home() {
         alt="home jpg"
         width={1920}
         height={1080}
-        className="w-full h-full object-cover brightness-[60%] "
+        className="w-full h-full object-cover brightness-75 "
       />
       <div className="absolute top-1/2 left-[5%] w-[70%] h-[280px] -translate-y-1/2 text-white text-5xl font-bold leading-tight z-20">
         <h1
