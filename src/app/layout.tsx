@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/header/Navigation";
 import Footer from "./components/footer/Footer";
+import { AuthProvider } from "@/context/authContext"; // <- import AuthProvider
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,27 +17,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rey Restu-Profile Web",
-  description: "Hi, I'm Rai Restu Pama — a Junior Full-Stack Web Developer who loves building clean, responsive, and dynamic web experiences.",
+  description:
+    "Hi, I'm Rai Restu Pama — a Junior Full-Stack Web Developer who loves building clean, responsive, and dynamic web experiences.",
   icons: {
-    icon:  "/miniLogos.png", 
+    icon: "/miniLogos.png",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="min-h-screen">
-        <Navigation/>
-        {children}
-        </div>
-        <Footer/>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AuthProvider> {/* <-- Bungkus semua komponen yang pakai useAuth */}
+          <div className="min-h-screen">
+            <Navigation />
+            {children}
+          </div>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
